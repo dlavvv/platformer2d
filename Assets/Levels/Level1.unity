@@ -342,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 719854086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -389,6 +389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpheight: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!95 &719854092
 Animator:
   serializedVersion: 5
@@ -421,9 +424,9 @@ GameObject:
   - component: {fileID: 1059911231}
   - component: {fileID: 1059911230}
   - component: {fileID: 1059911229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,8 +537,8 @@ Transform:
   m_GameObject: {fileID: 1059911227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -4.25, z: 0}
-  m_LocalScale: {x: 3.5, y: 0.31875, z: 1}
+  m_LocalPosition: {x: -0.0246, y: -4.1159, z: 0}
+  m_LocalScale: {x: 4.227686, y: 0.37115914, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
