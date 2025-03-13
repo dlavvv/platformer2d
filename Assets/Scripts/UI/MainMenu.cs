@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-   // [SerializeField] private GameObject startScreen;
 
     public void PlayGame()
     {
