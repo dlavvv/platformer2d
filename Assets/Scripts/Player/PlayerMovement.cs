@@ -37,9 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isGrounded())
         {
             Jump();
-
-            if(Input.GetKeyDown(KeyCode.Space) && isGrounded()) 
-                SoundManager.instance.PlaySound(jumpSound);
+            SoundManager.instance.PlaySound(jumpSound);
         }
 
         // set animator parameters

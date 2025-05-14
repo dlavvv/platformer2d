@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
         cooldownTimer = 0;
 
         fireballs[FindFireball()].transform.position = firePoint.position;
-        fireballs[FindFireball()].GetComponent<Projectile>().setDirection(Mathf.Sign(transform.localScale.x));
+        fireballs[FindFireball()].GetComponent<Fireball>().setDirection(Mathf.Sign(transform.localScale.x));
     }
 
     private int FindFireball() // check for inactive fireballs to use

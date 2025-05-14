@@ -49,7 +49,17 @@ public class Health : MonoBehaviour
                 anim.SetBool("grounded", true);
                  */
                 anim.SetTrigger("die");
-                GetComponent<PlayerMovement>().enabled = false;
+
+                if(GetComponent<PlayerMovement>() != null)
+                {
+                    GetComponent<PlayerMovement>().enabled = false;
+                }
+
+                if (GetComponent<Enemy_Melee>() != null)
+                {
+                    GetComponent<Enemy_Melee>().enabled = false;
+                }
+
                 dead = true;
                 SoundManager.instance.PlaySound(deathSound);
             }
@@ -91,4 +101,10 @@ public class Health : MonoBehaviour
             component.enabled = true;
         */
     }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

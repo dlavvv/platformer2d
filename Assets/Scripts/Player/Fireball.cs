@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Fireball : MonoBehaviour
 {
     [SerializeField] private float speed;
     private float direction;
@@ -34,6 +34,11 @@ public class Projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
+
+        if(collision.tag == "Enemy" || collision.tag == "Player")
+        {
+            collision.GetComponent<Health>().TakeDamage(1);
+        }
     }
 
     public void setDirection(float _direction)
