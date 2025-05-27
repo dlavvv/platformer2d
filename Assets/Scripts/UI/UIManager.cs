@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     {
         isGameOver = true;
         Time.timeScale = 0;
+        FindAnyObjectByType<PlayerAttack>().SetCanMove(false);
         gameOverScreen.SetActive(true);
         // SoundManager.instance.PlaySound(gameOverSound);
     }
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // restarts the current level
         Time.timeScale = 1;
+        FindAnyObjectByType<PlayerAttack>().SetCanMove(true);
     }
 
     public void MainMenu()
@@ -61,24 +63,32 @@ public class UIManager : MonoBehaviour
     public void PauseGame(bool status)
     {
         // if status == true pause | if status == false unpause
-        if(!isGameOver)
+        if (!isGameOver)
             pauseScreen.SetActive(status);
 
+
         // if pause is true, "freeze" time
-        if(status)
+        if (status)
+        {
             Time.timeScale = 0;
+            FindAnyObjectByType<PlayerAttack>().SetCanMove(false);
+        }
         else
+        {
             Time.timeScale = 1;
+            FindAnyObjectByType<PlayerAttack>().SetCanMove(true);
+        }
+            
     }
 
     public void SoundVolume()
     {
-        SoundManager.instance.ChangeSoundVolume(0.2f);
+        SoundManager.instance.ChangeSoundVolume(5);
     }
 
     public void MusicVolume()
     {
-        SoundManager.instance.ChangeMusicVolume(0.2f);
+        SoundManager.instance.ChangeMusicVolume(5);
     }
 
     #endregion

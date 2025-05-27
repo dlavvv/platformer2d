@@ -13,6 +13,7 @@ public class PlayerRespawn : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
     }
 
+    // animation event
     public void CheckRespawn()
     {
         // check if checkpoint available
@@ -24,11 +25,7 @@ public class PlayerRespawn : MonoBehaviour
             return; // don't execute the rest of the function
         }
 
-        transform.position = startCheckpoint.position; // move player to start position
-        playerHealth.Respawn(); // restore player health and reset animation
-
-        // move camera to start room
-        Camera.main.GetComponent<CameraController>().MoveToNewRoom(startCheckpoint.parent);
+        FindObjectOfType<QuestionPopUpManager>().ShowQuestion(OnAnswerCorrect, OnAnswerIncorrect);
     }
 
     // activate checkpoints
@@ -40,5 +37,17 @@ public class PlayerRespawn : MonoBehaviour
             collision.GetComponent<Collider2D>().enabled = false; // deactivate checkpoint collider
             Debug.Log("Player passed the checkpoint.");
         }
+    }
+
+    private void OnAnswerCorrect()
+    {
+        transform.position = startCheckpoint.position;
+        playerHealth.Respawn();
+        Camera.main.GetComponent<CameraController>().MoveToNewRoom(startCheckpoint.parent);
+    }
+
+    private void OnAnswerIncorrect()
+    {
+        uiManager.GameOver();
     }
 }

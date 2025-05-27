@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Melee : MonoBehaviour
@@ -10,6 +8,7 @@ public class Enemy_Melee : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private int dmg;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private AudioClip attackSound;
     private float cdTimer = Mathf.Infinity;
 
     [Header("Layer Settings")]
@@ -35,6 +34,7 @@ public class Enemy_Melee : MonoBehaviour
             if (cdTimer >= attackCd)
             {
                 cdTimer = 0;
+                SoundManager.instance.PlaySound(attackSound);
                 anim.SetTrigger("attackMelee");
             }
         }

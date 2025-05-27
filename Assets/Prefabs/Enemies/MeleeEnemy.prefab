@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354764270376658814}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.7, y: -0.009773493, z: -0.00059868547}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 804022903
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 097737625e3c0e8419ccfffab34674a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56eaee993fc09af458f443ca00e97345, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,10 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
-  iframesDuration: 0
-  numberOfFlashes: 0
-  deathSound: {fileID: 0}
-  hurtSound: {fileID: 0}
+  iframesDuration: 1
+  numberOfFlashes: 1
+  deathSound: {fileID: 8300000, guid: 5d1e2fc091575e04283a19e54ec96e3a, type: 3}
+  hurtSound: {fileID: 8300000, guid: 59835e8be6c080e43b05dad457b3fd95, type: 3}
   respawnSound: {fileID: 0}
 --- !u!114 &7465652790114857018
 MonoBehaviour:
@@ -184,11 +184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d67d6d1ca387604da58fa6bd46d0300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCd: 2
+  attackCd: 1.6
   distance: 0.5
   range: 3
   dmg: 1
   boxCollider: {fileID: 1291270393079372714}
+  attackSound: {fileID: 8300000, guid: df0b8575eb38a9a4c8fdfb57e81ee1e2, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024

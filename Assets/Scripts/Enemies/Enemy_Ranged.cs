@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Ranged : MonoBehaviour
@@ -15,6 +13,7 @@ public class Enemy_Ranged : MonoBehaviour
     [Header("Ranged Settings")]
     [SerializeField] private Transform firepoint;
     [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private AudioClip attackSound;
 
     [Header("Layer Settings")]
     [SerializeField] private LayerMask playerLayer;
@@ -38,6 +37,7 @@ public class Enemy_Ranged : MonoBehaviour
             if (cdTimer >= attackCd)
             {
                 cdTimer = 0;
+                SoundManager.instance.PlaySound(attackSound);
                 anim.SetTrigger("attackRanged");
             }
         }

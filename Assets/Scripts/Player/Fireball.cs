@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -31,13 +28,16 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hit = true;
-        boxCollider.enabled = false;
-        anim.SetTrigger("explode");
-
-        if(collision.tag == "Enemy" || collision.tag == "Player")
+        if(collision.tag != "Fireball")
         {
-            collision.GetComponent<Health>().TakeDamage(1);
+            hit = true;
+            boxCollider.enabled = false;
+            anim.SetTrigger("explode");
+
+            if(collision.tag == "Enemy" || collision.tag == "Player")
+            {
+                collision.GetComponent<Health>().TakeDamage(1);
+            }
         }
     }
 

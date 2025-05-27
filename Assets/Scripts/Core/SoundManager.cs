@@ -11,15 +11,20 @@ public class SoundManager : MonoBehaviour
         soundSource = GetComponent<AudioSource>();
         musicSource = transform.GetChild(0).GetComponent<AudioSource>();
 
-        // keep this object even when we switch to a new scene
+        // singleton pattern - only one instance of SoundManager is allowed
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        // destroy duplicate gameobjects
+        // if another instance exists, destory it
         else if (instance != null && instance != this)
             Destroy(gameObject);
+
+        if (!PlayerPrefs.HasKey("soundVolume"))
+            PlayerPrefs.SetInt("soundVolume", 100);
+        if (!PlayerPrefs.HasKey("musicVolume"))
+            PlayerPrefs.SetInt("musicVolume", 50);
 
         ChangeSoundVolume(0);
         ChangeMusicVolume(0);
@@ -30,39 +35,35 @@ public class SoundManager : MonoBehaviour
         soundSource.PlayOneShot(_sound);
     }
 
-    public void ChangeSoundVolume(float _change)
+    public void ChangeSoundVolume(int _change)
     {
-        float baseVolume = 1;
-
-        float currVol = PlayerPrefs.GetFloat("soundVolume", 1);
+        int currVol = PlayerPrefs.GetInt("soundVolume", 100);
         currVol += _change;
 
-        if(currVol > 1)
+        if(currVol > 100)
             currVol = 0;
         else if(currVol < 0)
-            currVol = 1;
+            currVol = 100;
 
-        float finalVol = currVol * baseVolume;
+        float finalVol = currVol / 100f;
         soundSource.volume = finalVol;
 
-        PlayerPrefs.SetFloat("soundVolume", currVol);
+        PlayerPrefs.SetInt("soundVolume", currVol);
     }
 
-    public void ChangeMusicVolume(float _change)
+    public void ChangeMusicVolume(int _change)
     {
-        float baseVolume = 0.3f;
-
-        float currVol = PlayerPrefs.GetFloat("musicVolume", 1);
+        int currVol = PlayerPrefs.GetInt("musicVolume", 100);
         currVol += _change;
 
-        if (currVol > 1)
+        if (currVol > 100)
             currVol = 0;
         else if (currVol < 0)
-            currVol = 1;
+            currVol = 100;
 
-        float finalVol = currVol * baseVolume;
+        float finalVol = currVol / 100f;
         musicSource.volume = finalVol;
 
-        PlayerPrefs.SetFloat("musicVolume", currVol);
+        PlayerPrefs.SetInt("musicVolume", currVol);
     }
 }

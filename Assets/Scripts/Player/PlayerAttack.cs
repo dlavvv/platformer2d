@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -13,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private PlayerMovement playerMovement;
     private float cooldownTimer = Mathf.Infinity;
+    private bool canMove = true;
 
     private void Awake()
     {
@@ -22,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove) return; // disables character movement while any menu is active
+
         if (Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
             Attack();
 
@@ -46,5 +46,10 @@ public class PlayerAttack : MonoBehaviour
                 return i;
         }
         return 0;
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
     }
 }
