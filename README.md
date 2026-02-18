@@ -5,7 +5,7 @@ So, the player is on the Wizard's "tail"😉.
 
 Structurally, the game has **_3 levels_** varying in difficulty, design and appearence, with different types of enemies and obstacles.  
 
-The game also has an educational side, providing a creative way for the player to respawn in case he runs out of health - a collection of questions about topics like history, science, geography and culture. A random question will pop-up and the player has to answer correctly if he wants to be respawned.
+The game also has an educational side, providing a creative way for the player to respawn in case he runs out of health - a collection of questions about topics like history, science, geography and culture. A random question will pop up and the player has to answer correctly if he wants to be respawned.
 
 ## About the Functionalities
 - Arrow keys and Space key - for character movement
